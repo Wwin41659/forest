@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `src/tool/subcommands/api_cmd.rs`."><title>api_cmd.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-46f98efaafac5295.ttf.woff2,FiraSans-Regular-018c141bf0843ffd.woff2,FiraSans-Medium-8f9a781e4970d388.woff2,SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2,SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../../static.files/rustdoc-081576b923113409.css"><meta name="rustdoc-vars" data-root-path="../../../../" data-static-root-path="../../../../static.files/" data-current-crate="forest_filecoin" data-themes="" data-resource-suffix="" data-rustdoc-version="1.79.0 (129f3b996 2024-06-10)" data-channel="1.79.0" data-search-js="search-bf21c90c8c1d92b1.js" data-settings-js="settings-4313503d2e1961c2.js" ><script src="../../../../static.files/storage-e32f0c247825364d.js"></script><script defer src="../../../../static.files/src-script-e66d777a5a92e9b2.js"></script><script defer src="../../../../src-files.js"></script><script defer src="../../../../static.files/main-20a3ad099b048cf2.js"></script><noscript><link rel="stylesheet" href="../../../../static.files/noscript-09095024cf37855e.css"></noscript><link rel="alternate icon" type="image/png" href="../../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="src-sidebar-title"><h2>Files</h2></div></nav><div class="sidebar-resizer"></div><main><nav class="sub"><form class="search-form"><span></span><div id="sidebar-button" tabindex="-1"><a href="../../../../forest_filecoin/all.html" title="show sidebar"></a></div><input class="search-input" name="search" aria-label="Run search in the documentation" autocomplete="off" spellcheck="false" placeholder="Type ‘S’ or ‘/’ to search, ‘?’ for more options…" type="search"><div id="help-button" tabindex="-1"><a href="../../../../help.html" title="help">?</a></div><div id="settings-menu" tabindex="-1"><a href="../../../../settings.html" title="settings">Settings</a></div></form></nav><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `src/tool/subcommands/api_cmd.rs`."><title>api_cmd.rs - source</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-46f98efaafac5295.ttf.woff2,FiraSans-Regular-018c141bf0843ffd.woff2,FiraSans-Medium-8f9a781e4970d388.woff2,SourceCodePro-Regular-562dcc5011b6de7d.ttf.woff2,SourceCodePro-Semibold-d899c5a5c4aeb14a.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../../../../static.files/normalize-76eba96aa4d2e634.css"><link rel="stylesheet" href="../../../../static.files/rustdoc-dd39b87e5fcfba68.css"><meta name="rustdoc-vars" data-root-path="../../../../" data-static-root-path="../../../../static.files/" data-current-crate="forest_filecoin" data-themes="" data-resource-suffix="" data-rustdoc-version="1.80.0 (051478957 2024-07-21)" data-channel="1.80.0" data-search-js="search-d52510db62a78183.js" data-settings-js="settings-4313503d2e1961c2.js" ><script src="../../../../static.files/storage-118b08c4c78b968e.js"></script><script defer src="../../../../static.files/src-script-e66d777a5a92e9b2.js"></script><script defer src="../../../../src-files.js"></script><script defer src="../../../../static.files/main-20a3ad099b048cf2.js"></script><noscript><link rel="stylesheet" href="../../../../static.files/noscript-df360f571f6edeae.css"></noscript><link rel="alternate icon" type="image/png" href="../../../../static.files/favicon-32x32-422f7d1d52889060.png"><link rel="icon" type="image/svg+xml" href="../../../../static.files/favicon-2c020d218678b618.svg"></head><body class="rustdoc src"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="src-sidebar-title"><h2>Files</h2></div></nav><div class="sidebar-resizer"></div><main><rustdoc-search></rustdoc-search><section id="main-content" class="content"><div class="example-wrap"><div data-nosnippet><pre class="src-line-numbers"><a href="#1" id="1">1</a>
 <a href="#2" id="2">2</a>
 <a href="#3" id="3">3</a>
 <a href="#4" id="4">4</a>
@@ -1979,6 +1979,44 @@
 <a href="#1979" id="1979">1979</a>
 <a href="#1980" id="1980">1980</a>
 <a href="#1981" id="1981">1981</a>
+<a href="#1982" id="1982">1982</a>
+<a href="#1983" id="1983">1983</a>
+<a href="#1984" id="1984">1984</a>
+<a href="#1985" id="1985">1985</a>
+<a href="#1986" id="1986">1986</a>
+<a href="#1987" id="1987">1987</a>
+<a href="#1988" id="1988">1988</a>
+<a href="#1989" id="1989">1989</a>
+<a href="#1990" id="1990">1990</a>
+<a href="#1991" id="1991">1991</a>
+<a href="#1992" id="1992">1992</a>
+<a href="#1993" id="1993">1993</a>
+<a href="#1994" id="1994">1994</a>
+<a href="#1995" id="1995">1995</a>
+<a href="#1996" id="1996">1996</a>
+<a href="#1997" id="1997">1997</a>
+<a href="#1998" id="1998">1998</a>
+<a href="#1999" id="1999">1999</a>
+<a href="#2000" id="2000">2000</a>
+<a href="#2001" id="2001">2001</a>
+<a href="#2002" id="2002">2002</a>
+<a href="#2003" id="2003">2003</a>
+<a href="#2004" id="2004">2004</a>
+<a href="#2005" id="2005">2005</a>
+<a href="#2006" id="2006">2006</a>
+<a href="#2007" id="2007">2007</a>
+<a href="#2008" id="2008">2008</a>
+<a href="#2009" id="2009">2009</a>
+<a href="#2010" id="2010">2010</a>
+<a href="#2011" id="2011">2011</a>
+<a href="#2012" id="2012">2012</a>
+<a href="#2013" id="2013">2013</a>
+<a href="#2014" id="2014">2014</a>
+<a href="#2015" id="2015">2015</a>
+<a href="#2016" id="2016">2016</a>
+<a href="#2017" id="2017">2017</a>
+<a href="#2018" id="2018">2018</a>
+<a href="#2019" id="2019">2019</a>
 </pre></div><pre class="rust"><code><span class="comment">// Copyright 2019-2024 ChainSafe Systems
 // SPDX-License-Identifier: Apache-2.0, MIT
 
@@ -1988,7 +2026,7 @@
 <span class="kw">use </span><span class="kw">crate</span>::cli_shared::snapshot::TrustedVendor;
 <span class="kw">use </span><span class="kw">crate</span>::daemon::db_util::{download_to, populate_eth_mappings};
 <span class="kw">use </span><span class="kw">crate</span>::db::{car::ManyCar, MemoryDB};
-<span class="kw">use </span><span class="kw">crate</span>::eth::EthChainId <span class="kw">as </span>EthChainIdType;
+<span class="kw">use </span><span class="kw">crate</span>::eth::{EthChainId <span class="kw">as </span>EthChainIdType, SAFE_EPOCH_DELAY};
 <span class="kw">use </span><span class="kw">crate</span>::genesis::{get_network_name_from_genesis, read_genesis_header};
 <span class="kw">use </span><span class="kw">crate</span>::key_management::{KeyStore, KeyStoreConfig};
 <span class="kw">use </span><span class="kw">crate</span>::lotus_json::HasLotusJson;
@@ -3188,31 +3226,55 @@
 }
 
 <span class="kw">fn </span>eth_tests() -&gt; Vec&lt;RpcTest&gt; {
-    <span class="macro">vec!</span>[
-        RpcTest::identity(EthAccounts::request(()).unwrap()),
-        RpcTest::basic(EthBlockNumber::request(()).unwrap()),
-        RpcTest::identity(EthChainId::request(()).unwrap()),
+    <span class="kw">let </span><span class="kw-2">mut </span>tests = <span class="macro">vec!</span>[];
+    <span class="kw">for </span>use_alias <span class="kw">in </span>[<span class="bool-val">false</span>, <span class="bool-val">true</span>] {
+        tests.push(RpcTest::identity(
+            EthAccounts::request_with_alias((), use_alias).unwrap(),
+        ));
+        tests.push(RpcTest::basic(
+            EthBlockNumber::request_with_alias((), use_alias).unwrap(),
+        ));
+        tests.push(RpcTest::identity(
+            EthChainId::request_with_alias((), use_alias).unwrap(),
+        ));
         <span class="comment">// There is randomness in the result of this API
-        </span>RpcTest::basic(EthGasPrice::request(()).unwrap()),
-        RpcTest::basic(EthSyncing::request(()).unwrap()),
-        RpcTest::identity(
-            EthGetBalance::request((
-                EthAddress::from_str(<span class="string">"0xff38c072f286e3b20b3954ca9f99c05fbecc64aa"</span>).unwrap(),
-                BlockNumberOrHash::from_predefined(Predefined::Latest),
-            ))
+        </span>tests.push(RpcTest::basic(
+            EthGasPrice::request_with_alias((), use_alias).unwrap(),
+        ));
+        tests.push(RpcTest::basic(
+            EthSyncing::request_with_alias((), use_alias).unwrap(),
+        ));
+        tests.push(RpcTest::identity(
+            EthGetBalance::request_with_alias(
+                (
+                    EthAddress::from_str(<span class="string">"0xff38c072f286e3b20b3954ca9f99c05fbecc64aa"</span>).unwrap(),
+                    BlockNumberOrHash::from_predefined(Predefined::Latest),
+                ),
+                use_alias,
+            )
             .unwrap(),
-        ),
-        RpcTest::identity(
-            EthGetBalance::request((
-                EthAddress::from_str(<span class="string">"0xff38c072f286e3b20b3954ca9f99c05fbecc64aa"</span>).unwrap(),
-                BlockNumberOrHash::from_predefined(Predefined::Pending),
-            ))
+        ));
+        tests.push(RpcTest::identity(
+            EthGetBalance::request_with_alias(
+                (
+                    EthAddress::from_str(<span class="string">"0xff38c072f286e3b20b3954ca9f99c05fbecc64aa"</span>).unwrap(),
+                    BlockNumberOrHash::from_predefined(Predefined::Pending),
+                ),
+                use_alias,
+            )
             .unwrap(),
-        ),
-        RpcTest::basic(Web3ClientVersion::request(()).unwrap()),
-        RpcTest::basic(EthMaxPriorityFeePerGas::request(()).unwrap()),
-        RpcTest::identity(EthProtocolVersion::request(()).unwrap()),
-    ]
+        ));
+        tests.push(RpcTest::basic(
+            Web3ClientVersion::request_with_alias((), use_alias).unwrap(),
+        ));
+        tests.push(RpcTest::basic(
+            EthMaxPriorityFeePerGas::request_with_alias((), use_alias).unwrap(),
+        ));
+        tests.push(RpcTest::identity(
+            EthProtocolVersion::request_with_alias((), use_alias).unwrap(),
+        ));
+    }
+    tests
 }
 
 <span class="kw">fn </span>eth_tests_with_tipset&lt;DB: Blockstore&gt;(store: <span class="kw-2">&amp;</span>Arc&lt;DB&gt;, shared_tipset: <span class="kw-2">&amp;</span>Tipset) -&gt; Vec&lt;RpcTest&gt; {
@@ -3265,6 +3327,20 @@
         RpcTest::identity(
             EthGetBlockByNumber::request((
                 BlockNumberOrHash::from_block_number(shared_tipset.epoch()),
+                <span class="bool-val">true</span>,
+            ))
+            .unwrap(),
+        ),
+        RpcTest::identity(
+            EthGetBlockByNumber::request((
+                BlockNumberOrHash::from_predefined(Predefined::Safe),
+                <span class="bool-val">true</span>,
+            ))
+            .unwrap(),
+        ),
+        RpcTest::identity(
+            EthGetBlockByNumber::request((
+                BlockNumberOrHash::from_predefined(Predefined::Finalized),
                 <span class="bool-val">true</span>,
             ))
             .unwrap(),
@@ -3432,7 +3508,7 @@
     </span><span class="kw">let </span>shared_tipset = store
         .heaviest_tipset()<span class="question-mark">?
         </span>.chain(<span class="kw-2">&amp;</span>store)
-        .take(<span class="number">10</span>)
+        .take(SAFE_EPOCH_DELAY <span class="kw">as </span>usize)
         .last()
         .expect(<span class="string">"Infallible"</span>);
 
